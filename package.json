@@ -1,0 +1,14 @@
+{
+  "name": "zeru-website-original",
+  "version": "1.0.0",
+  "description": "## Description  Website ini adalah website utama zeru ku yang kubangun 2x lagi design sebelumnya.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.10.0"
+  }
+}
