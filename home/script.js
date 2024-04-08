@@ -3,14 +3,14 @@ console.log("zeru website. created by Justine, © 2023-2024 all rights reserved.
 
 // back to top btn
 var btn = document.querySelector('#button-to-top');
-
-window.onscroll = (e) => {
+document.addEventListener('scroll', (e) => {
+  console.log('dd')
   if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
     btn.classList.add('show');
   } else {
     btn.classList.remove('show');
   }
-}
+})
 btn.onclick = (e) => {
   e.preventDefault();
   document.body.scrollTop = 0; // For Safari
