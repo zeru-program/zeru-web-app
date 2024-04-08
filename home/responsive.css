@@ -16,10 +16,24 @@
     position: fixed;
     top: -50%;
     right: 0;
-    height: 50vh;
+    height: auto !important;
+    padding-block: 20px;
     gap: 0;
   }
-
+  #homeTitle {
+    font-size: 2em;
+  }
+  .img-skil {
+    width: 35px;
+    padding-top: 5px;
+  }
+  .contact-information, .contact-form {
+    width: 300px !important;
+  }
+  .box {
+   width: 300px;
+   height: 200px;
+  }
   .act-link {
     display: flex;
     position: fixed;
@@ -67,14 +81,14 @@
     justify-content: center;
     align-items: left;
     flex-direction: column;
-    height: 38vh;
+    height: auto !important;
     background: rgba(225,225,225,.5);
     position: fixed;
     top: -50%;
     right: 0;
+    padding-block: 20px !important;
     gap: 5px;
   }
-
   .act-link {
     display: flex;
     position: fixed;
@@ -122,6 +136,8 @@
     flex-direction: column;
     position: fixed;
     top: -50%;
+    height: auto !important;
+    padding-block: 20px;
     right: 0;
     gap: 5px;
   }
@@ -173,7 +189,8 @@
     right: 0;
     gap: 0;
     width: auto;
-    height: 50px;
+    height: 50px !important;
+    padding-inline: 0 !important;
     margin-left: 40%;
     font-size: .65em;
     z-index: 99999;
@@ -190,7 +207,7 @@
   }
   .isi-info-contact {
     position: absolute;
-  top: 50%;
+    top: 50%;
   }
 .isi-popup-succ {
   width: 350px;
@@ -212,6 +229,14 @@
 }
 .link-project {
   font-size: 1.1em;
+}
+.img-porto {
+  width: 100% !important;
+  background-size: 100%;
+}
+.btn-portofolio {
+  width: 100px !important;
+  height: 100px !important;
 }
 }
 
@@ -235,8 +260,9 @@
     right: 0;
     gap: 0;
     width: auto;
-    height: 50px;
+    height: 50px !important;
     margin-left: 45%;
+    padding-inline: 0 !important;
     font-size: .65em;
     z-index: 99999;
   }
@@ -270,5 +296,9 @@
 }
 .link-project {
   font-size: 1.1em;
+}
+.img-porto {
+  width: 100% !important;
+  background-size: 100%;
 }
 }

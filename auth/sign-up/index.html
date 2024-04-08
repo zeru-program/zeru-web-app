@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Page</title>
+   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+   <script>
+     const verifyLogin = localStorage.getItem("hasLogin")
+     window.onload = () => {
+       if (verifyLogin) {
+         window.location.href = "/home/";
+         return;
+       } 
+     }
+   </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="con-all">
+      <label class="header-title">Sign</label>
+      <div class="con-input">
+        <form id="formSubm">
+          <label class="input-label">Username</label>
+          <input type="text" class="inputOption username" placeholder="type in here.." name="username" maxlength="8" required />
+          <br />
+          <label class="input-label">Email</label>
+          <input type="email" class="inputOption email" placeholder="type in here.." name="email" required />
+          <br />
+          <label class="input-label">Password</label>
+          <div class="con-hidden-pw">
+            <input type="password" id="passAsli" name="password" class="inputOption passwordAsli"
+              placeholder="type in here.." name="data[Password]" required />
+            <img src="voff.png" id="asli" class="vis-pass" alt="show" onclick="switchOnPwAsli()" />
+          </div>
+          <label class="not-length-pw"></label>
+          <br />
+          <label class="input-label">Confirm Password</label>
+          <div class="con-hidden-pw">
+            <input type="password" id="passConfirm" class="inputOption passwordConfirm" placeholder="type in here.."
+              name="confirm" onkeyup="validatePassword()" required />
+            <img src="voff.png" id="confirm" class="vis-pass" alt="show" onclick="switchOnPwConfirm()" />
+            <div class="con-accept">
+              <input type="checkbox" id="cookies" />
+              <label>I agree the cookies</label>
+            </div>
+          </div>
+          <label class="not-value-pw"></label>
+          <br />
+          <br />
+          <br />
+          <br />
+          <button type="submit" class="btn-login" disabled>
+            Continue
+          </button>
+        </form>
+      </div>
+      <br />
+      <br />
+
+      <div class="con-footer">
+        <label class="footer-title">already have an account?
+          <a href="/auth/sign-in/">Sign-in</a></label>
+        <label class="footer-title">forgot your password?
+          <a href="/auth/forgot-pass/">Reset Password</a></label>
+      </div>
+    </div>
+  </div>
+  <div class="cek-wrong">
+    <div class="wrong-popup">
+      <label>Incorrect <br />username, password or confirm password!<br />
+        or checkbox cookies not checked</label>
+      <button class="close-popup" onclick="closePopupWrong()">
+        OK
+      </button>
+    </div>
+  </div>
+
+  <div class="popupWait">
+    <div class="wait-popup">
+      <img src="loadSign.svg" class="load-sign" alt="loading">
+      <div class="isi-wait">
+        <label>Loading..</label>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

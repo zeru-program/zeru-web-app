@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Forgot your pass</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+</head>
+
+<body>
+  <div class="maintenance">
+    Forgot password page is maintained. Please be patient
+    <br>
+    <div class="lds-ripple"><div></div><div></div></div>
+  </div>
+  
+  
+  <div class="box-reset">
+    <label class="header-title">Forgot Password</label>
+    <div class="con-input">
+      <form  id="formSubm">
+      <label class="input-label">Email</label>
+      <input type="text" id="email" class="inputOption" placeholder="type in here.." value="admin123@gmail.com" required name="email" />
+      <br>
+      <label class="input-label">Password Lama</label>
+      <input type="text" id="passOld" class="inputOption" placeholder="type in here.." value="admin1233" required name="password" />
+      <br>
+      <label class="input-label">Password baru</label>
+      <input type="text" id="passNew" class="inputOption" placeholder="type in here.." value="admin8009" required name="password" />
+      <br>
+      <br>
+      <br>
+    <button class="btn-login" type="submit">Reset</button>
+    </form>
+      <div class="con-footer">
+        <label class="footer-title">Have a account? <a href="/auth/sign-in/">Sign-in</a></label>
+        <label class="footer-title">Don't have a acount?
+          <a href="/auth/sign-up/">Sign-up</a></label>
+      </div>
+    </div>
+  </div>
+  <div class="cek-wrong">
+    <div class="wrong-popup">
+      <label>Please type <br>the email or ussername!</label>
+      <button class="close-popup" onclick="closePopupWrong()">OK</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

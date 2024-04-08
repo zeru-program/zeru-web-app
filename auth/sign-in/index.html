@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+   <script>
+     const verifyLogin = localStorage.getItem("hasLogin")
+     window.onload = () => {
+       if (verifyLogin) {
+         window.location.href = "/home/";
+         return;
+       } 
+     }
+   </script>
+</head>
+<body>
+  <div class="container">
+    <div class="con-all">
+      <label class="header-title">Login</label>
+      <div class="con-input">
+        <form id="signin-form">
+        <label class="input-label" for="username-email">Username or email</label>
+        <input type="text" class="inputOption" placeholder="type in here.." id="username-email" name="username-email" required />
+        <br>
+        <label class="input-label" for="password">Password</label>
+        <div class="con-hidden-pw">
+          <input type="password" class="inputOption" placeholder="type in here.." id="password" name="password" required />
+          <img src="voff.png" class="vis-pass" alt="show" onclick="switchOn()" />
+          <div class="con-accept">
+            <input type="checkbox" name="" id="" required /> <label>I agree the cookies</label>
+          </div>
+        </div>
+
+
+        <br>
+      <br>
+      <br>
+      <br>
+      <button type="submit" class="btn-login">Sign-in</button>
+      </form>
+      </div>
+      <br />
+      <br />
+
+      <div class="con-footer">
+        <label class="footer-title">Forgot your password? <a href="/auth/forgot-pass/">Reset password</a></label>
+        <label class="footer-title">Don't have a acount?
+          <a href="/auth/sign-up/">Sign up</a></label>
+      </div>
+    </div>
+  </div>
+  <div class="cek-wrong">
+    <div class="wrong-popup">
+      <label>Incorrect <br>username, email or password!</label>
+      <button class="close-popup" onclick="closePopupWrong()">OK</button>
+    </div>
+  </div>
+  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

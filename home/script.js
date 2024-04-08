@@ -1,8 +1,40 @@
 // cptyt
-console.log("zeru website. created by Justine, © 2024 all rights reserved.");
+console.log("zeru website. created by Justine, © 2023-2024 all rights reserved.");
+
+// back to top btn
+var btn = document.querySelector('#button-to-top');
+
+window.onscroll = (e) => {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+}
+btn.onclick = (e) => {
+  e.preventDefault();
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0;
+  handleScrollUp();
+}
+
+
+
+
 
 // navbar system
+const nav = document.querySelector('.con-nav');
+const home = document.getElementById('home');
 const navClicks = document.querySelectorAll(".link-item");
+
+window.onscroll = (e) => {
+  if (document.documentElement.scrollTop >= (home.offsetHeight - nav.offsetHeight)) {
+    nav.classList.add('nav-shadow');
+  } else {
+    nav.classList.remove('nav-shadow');
+  }
+};
+
 navClicks.forEach(navClick => {
     navClick.addEventListener("click", () => {
         document.querySelector(".active").classList.remove("active");
@@ -115,6 +147,7 @@ var skilsContainer = document.getElementById("skils");
 var skilTitle = document.getElementById("skilTitle");
 var skilBoxs = document.querySelectorAll(".box");
 var btnTalk = document.querySelector(".btn-talk");
+var btnCv = document.querySelector(".btn-cv");
 var conImgTalk = document.querySelector(".con-img-talk");
 var lastScrollTop = 0;
 var isLogoTranslated = false;
@@ -124,7 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
     title.style.animation = "traslRight 1s ease";
     subtitle.style.animation = "traslRight 2s ease";
     btnTalk.style.animation = "traslRight 2.5s ease";
-    conImgTalk.style.animation = "traslRight 3s ease";
+    btnCv.style.animation = "traslRight 3s ease";
+    conImgTalk.style.animation = "traslRight 3.5s ease";
 });
 
 window.addEventListener("scroll", function () {
@@ -147,11 +181,13 @@ function handleScrollDown(currentScrollTop) {
             title.style.animation = "traslRightOut 1s ease";
             subtitle.style.animation = "traslRightOut 2s ease";
             btnTalk.style.animation = "traslRightOut 2.5s ease";
-            conImgTalk.style.animation = "traslRightOut 3s ease";
+            btnCv.style.animation = "traslRightOut 3s ease";
+            conImgTalk.style.animation = "traslRightOut 3.5s ease";
             logo.classList.add("translated");
             title.classList.add("translatedRight");
             subtitle.classList.add("translatedRight");
             btnTalk.classList.add("translatedRight");
+            btnCv.classList.add("translatedRight");
             conImgTalk.classList.add("translatedRight");
             isLogoTranslated = true;
         }
@@ -183,91 +219,18 @@ function handleScrollUp() {
         title.style.animation = "traslRight 1s ease";
         subtitle.style.animation = "traslRight 2s ease";
         btnTalk.style.animation = "traslRight 2.5s ease";
-        conImgTalk.style.animation = "traslRight 3s ease";
+        btnCv.style.animation = "traslRight 3s ease";
+        conImgTalk.style.animation = "traslRight 3.5s ease";
         logo.classList.remove("translated");
         title.classList.remove("translatedRight");
         subtitle.classList.remove("translatedRight");
         btnTalk.classList.remove("translatedRight");
+        btnCv.classList.remove("translatedRight");
         conImgTalk.classList.remove("translatedRight");
         isLogoTranslated = false;
     }
 }
 
-// system image slider
-const slider = document.getElementById("slider");
-const cr1 = document.getElementById("r1");
-const cr2 = document.getElementById("r2");
-const cr3 = document.getElementById("r3");
-const cr4 = document.getElementById("r4");
-const imgp1 = document.getElementById("imgp1");
-const imgp2 = document.getElementById("imgp2");
-const imgp3 = document.getElementById("imgp3");
-const imgp4 = document.getElementById("imgp4");
-let startX;
-let currentIndex = 0;
-
-slider.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-});
-
-slider.addEventListener("touchmove", e => {
-    if (startX) {
-        const currentX = e.touches[0].clientX;
-        const diffX = startX - currentX;
-        if (diffX > 10) {
-            if (currentIndex < slider.children.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateSlider();
-        } else if (diffX < -10) {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } /*else {
-          currentIndex = slider.children.length - 1;
-        } */
-            updateSlider();
-        }
-
-        startX = null;
-    }
-});
-function gantiSlideOtomatis() {
-    currentIndex += 1;
-    if (currentIndex >= slider.children.length) {
-        currentIndex = 0;
-    }
-    updateSlider();
-}
-setInterval(gantiSlideOtomatis, 5000);
-function updateSlider() {
-    const translateValue = -currentIndex * 100 + "%";
-    slider.style.transform = "translateX(" + translateValue + ")";
-    cr1.classList.remove("on");
-    cr2.classList.remove("on");
-    cr3.classList.remove("on");
-    cr4.classList.remove("on");
-
-    imgp1.classList.remove("opacityOn");
-    imgp2.classList.remove("opacityOn");
-    imgp3.classList.remove("opacityOn");
-    imgp4.classList.remove("opacityOn");
-
-    if (currentIndex === 0) {
-        cr1.classList.add("on");
-        imgp1.classList.add("opacityOn");
-    } else if (currentIndex === 1) {
-        cr2.classList.add("on");
-        imgp2.classList.add("opacityOn");
-    } else if (currentIndex === 2) {
-        cr3.classList.add("on");
-        imgp3.classList.add("opacityOn");
-    } else if (currentIndex === 3) {
-        cr4.classList.add("on");
-        imgp4.classList.add("opacityOn");
-    }
-}
 
 // sistem form submit
 const form = document.querySelector(".form");
@@ -327,21 +290,56 @@ function talk() {
     window.location.href = "#talkHref";
 }
 
-
-// integrisàsi ke airtable database
-const token = 'patr7CaP3OREqdu3U.71469001afdda2024f6ad10f1989a0fc08079ac5dfbee77f704789d79830be92';
-const endpoint = 'https://api.airtable.com/v0/appaPLvXBCHaWhQfA/Sheet1/';
-
-fetch(endpoint, {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+// login system and welcoming
+const verifyLogin = localStorage.getItem('hasLogin');
+const usnUser = localStorage.getItem('username');
+const emailUser = localStorage.getItem('email');
+const passUser = localStorage.getItem('password');
+const textWelcome = document.getElementById('homeTitle');
+const textUsnNav = document.getElementById('textUserNav');
+const signIn = document.getElementById('sign-in-btn');
+const signUp = document.getElementById('sign-up-btn');
+window.onload = () => {
+  if (verifyLogin) {
+    //text
+    if (usnUser.split(" ").length > 6) {
+    const shortenedUser = usnUser.split(" ").slice(0, 6).join(" ") + "..";
+    textWelcome.innerText = 'Welcome ' + shortenedUser + '!';
+  } else {
+    textWelcome.innerText = 'Welcome ' + usnUser + '!';
   }
-})
-.then(response => response.json())
-.then(data => {
-})
-.catch(error => {
-  console.error('Error:', error);
-});
+  
+  // view sign
+   textUsnNav.classList.remove('d-none');
+   textUsnNav.classList.add('d-flex');
+   textUsnNav.textContent = "Hello " + usnUser + "!";
+   logout.classList.remove('d-none');
+   logout.classList.add('d-flex');
+   signIn.style.display = "none";
+   signUp.style.display = "none";
+  } else {
+    textWelcome.innerText = 'Welcome !';
+  }
+}
+
+
+// download cv
+function downloadCv() {
+  const anchor = document.createElement('a');
+  anchor.href = "JUSTINE_CV_2024_BOGOR_INDONESIA.pdf";
+  anchor.download = "JUSTINE_CV_2024_BOGOR_INDONESIA.pdf";
+
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+
+}
+
+// log out
+function logoutUser() {
+    localStorage.removeItem('hasLogin');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+  location.reload();
+}

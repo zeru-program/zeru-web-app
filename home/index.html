@@ -4,6 +4,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Zeru page</title>
+        <!-- link styleing -->
         <link rel="stylesheet" href="style.css" type="text/css" media="all" />
         <link
             rel="stylesheet"
@@ -11,18 +12,23 @@
             type="text/css"
             media="all"
         />
+        <!-- link styleing -->
+        <!-- Library bootstrap styleing -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
         <link rel="stylesheet" href="https://unpkg.com/transition-style" />
-        
-      <!--   script module firebase -->
-        <!-- Firebase SDK Scripts -->
-    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Library bootstrap styleing -->
     </head>
     <body>
-        <!-- =============== Header & Navbar ================ -->
+      
+    <!-- =============== button back to top ================ -->
+      <button id="button-to-top"><i class="bi bi-arrow-up"></i></button>
+      
+       <!-- =============== Header & Navbar ================ -->
         <header>
             <nav>
                 <div class="con-nav">
@@ -42,12 +48,19 @@
                         >Portofolio n Project</label
                     >
                     <label id="toContact" class="link-item">Contact</label>
-                </div>
+                    <label id="sign-in-btn" onclick="window.location.href = '/auth/sign-in/'" class="link-item p-2 btn btn-outline-primary">Sign-in</label>
+                    <label id="sign-up-btn" onclick="window.location.href = '/auth/sign-up/'" class="link-item p-2 btn btn-bg-primary btn-outline-primary text-light">Sign-up</label>
+                    <label id="textUserNav" style="margin-left:10px;" class="d-none p-2">Hello !</label>
+                    <label id="logout" class="d-none link-item p-2 btn-outline-danger" style="margin-left:10px;" onclick="logoutUser()">Log-out</label>
+                    </div>
             </nav>
         </header>
-        <!-- ============= main content ============== -->
+        <!-- ============= main content start ============== -->
         <main>
+            <!-- home page start -->
             <div class="container" id="home">
+              <div id="bg-patern-home"></div>
+              <div class="fill-home">
                 <div
                     class="animateWipe"
                     transition-style="out:circle:top-right"
@@ -56,9 +69,12 @@
                 <label class="title" id="homeTitle">Welcome !</label>
                 <label class="sub-title" id="homeSubtitle">
                     <font class="hi-title">Hi I'm Justine</font> !<br />
-                    Web developer || Frond end engineer || Grapihic designer
+                    <p class="px-3">Web developer || Frond end engineer || Grapihic designer</p>
                 </label>
+                <div class="d-flex flex-wrap">
                 <button class="btn-talk" onclick="talk()">Let's Talk</button>
+                <button class="btn-cv" style="padding-inline:8px !important;" onclick="downloadCv()">Download CV</button>
+                </div>
                 <div class="con-img-talk">
                     <img
                         src="whatsapp.png"
@@ -69,12 +85,17 @@
                     <img src="instagram.png" class="img-talk-social" alt="" />
                     <img src="gmail.png" class="img-talk-social" alt="" />
                 </div>
+                </div>
+                <svg class="waves-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,213.3C384,224,480,224,576,213.3C672,203,768,181,864,176C960,171,1056,181,1152,181.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             </div>
+            <!-- home page end -->
+            
+            <!-- about page start -->
             <div class="container" id="about">
                 <label class="title translateAbout" id="aboutTitle"
                     >About zeru</label
                 >
-                <label class="sub-title translateAbout" id="aboutSubtitle">
+                <p class="sub-title px-3 translateAbout" id="aboutSubtitle" style="padding-inline:15px !important;">
                     I am Justine, the student who created this Zeru website.
                     This website was created or worked on in January 2024 and
                     released in February 2024. With my sufficient skills, I
@@ -88,9 +109,12 @@
                     existing photos and designs, as well as video editing.
                     Thinking creatively and with high integrity is the my
                     vision.
-                </label>
+                </p>
             </div>
-            <div class="container" id="skils">
+            <!-- about page end -->
+            
+            <!-- skils page start -->
+            <div class="container" style="padding-inline:10px !important;" id="skils">
                 <label class="title" id="skilTitle">What are my skills?</label>
                 <label class="sub-title">my skills that I currently have</label>
                 <!-- box -->
@@ -145,52 +169,45 @@
                     </div>
                 </div>
             </div>
-            <div class="container" id="portofolio">
-                <div id="slider-container">
-                    <div id="slider" class="bxsh">
-                        <div class="slide opacityOn" id="imgp1">
-                            <img
-                                src="por1.jpg"
-                                class="img-porto"
-                                alt="Slide 1"
-                            />
-                        </div>
-                        <div class="slide" id="imgp2">
-                            <img
-                                src="por2.jpg"
-                                class="img-porto"
-                                alt="Slide 2"
-                            />
-                        </div>
-                        <div class="slide" id="imgp3">
-                            <img
-                                src="por3.jpg"
-                                class="img-porto"
-                                alt="Slide 3"
-                            />
-                        </div>
-                        <div class="slide" id="imgp4">
-                            <img
-                                src="por4.jpg"
-                                class="img-porto"
-                                alt="Slide 3"
-                            />
-                        </div>
-                    </div>
-                <div class="decoration-block topDec"></div>
-                <div class="decoration-block bottomDec"></div>
-                </div>
-                <div class="slide-check">
-                  <div class="check-radio on" id="r1"></div>
-                  <div class="check-radio" id="r2"></div>
-                  <div class="check-radio" id="r3"></div>
-                  <div class="check-radio" id="r4"></div>
-                </div>
-                
-                <!-- projek -->
+            <!-- skils page end -->
+            
+            <!-- servis page start -->
+            <div class="container" id="servis">
+                <label class="title-servis w-100" onclick="window.location.href='https://wa.me/6287774487198'">
+                  Take our Servis in here!
+                  </label>
             </div>
-            <div class="container" id="project">
-              <label class="title-project-v1">Project</label>
+            <!-- servis page start -->
+            
+            <!-- Portofolio carosuel start -->
+            <div class="" id="portofolio">
+             <div id="carouselExampleInterval" class="carousel slide carousel-fade bg-at-fix w-100 fix-padding-i" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <div style="background-image: url('por1.jpg');" class="d-block img-porto w-100" alt=""></div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <div style="background-image: url('por2.jpg');" class="d-block img-porto w-100" alt="..."></div>
+              </div>
+              <div class="carousel-item">
+                <div style="background-image: url('por3.jpg');" class="d-block img-porto w-100" alt="..."></div>
+              </div>
+            </div>
+            <button class="carousel-control-prev btn-portofolio" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next btn-portofolio" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          </div>
+            <!-- Portofolio carosuel end -->
+            
+                <!-- projek  page start -->
+            <div class="container pt-5" id="project">
+              <label class="title-project-v1">Zeru Project</label>
               <div class="container-project-isi">
               <div style="display: flex;">
               <div class="all-project">
@@ -232,11 +249,18 @@
               </div>
               </div>
             </div>
+                <!-- projek  page end -->
+                
+                <!-- contact us  page start -->
             <div class="container" id="contact">
               <div class="contact-information">
                 <label class="title tContact">Follow us</label>
                 <br>
                 <div class="isi-info-contact">
+                  <div class="c1-contact">
+                  <i class="img-talk-social bi bi-github" alt=""></i>
+                    <label><a href="https://github.com/zeru-program/" class="href-contact">@zeru-program</a></label>
+                  </div>
                   <div class="c1-contact">
                   <img src="whatsapp.png" class="img-talk-social" alt="" />
                     <label><a href="https://wa.me/6289526333265" class="href-contact">+6289526333265</a></label>
@@ -278,23 +302,26 @@
               </form>
               </div>
             </div>
-            <footer>
+                <!-- contact us  page end -->
+        </main>
+                <!-- footer start -->
+            <footer class="">
               <div class="container-footer">
                 <label class="logo-footer">Zerr.</label>
                 <div class="isi-f">
                 <label class="title-footer">Information web zeru</label>
                 <p class="sub-footer">Created by zeru</p>
                 <p class="sub-footer">programming language HTML5,CSS,JS</p>
-                <p class="sub-footer">library form html SHEETDB</p>
+                <p class="sub-footer">library database from sheets with app script</p>
                 <p class="sub-footer">library css ANIMATE.CSS,TRANSITION.CSS</p>
                 <p class="sub-footer">hosting netlify and github</p>
                 <p class="sub-footer">created in 17 febuary 2024</p>
                 </div>
                 <div class="isi-f">
                 <label class="title-footer">Services</label>
-                <p class="sub-footer">web development</p>
+                <p class="sub-footer">web developer</p>
                 <p class="sub-footer">web design</p>
-                <p class="sub-footer">front-end support</p>
+                <p class="sub-footer">front-end engineer</p>
                 <p class="sub-footer">back-end junior support</p>
                 <p class="sub-footer">designer</p>
                 <p class="sub-footer">cinematography</p>
@@ -303,29 +330,36 @@
                 <label class="title-footer">Activity</label>
                 <p class="sub-footer">study in smpn school</p>
                 <p class="sub-footer">study web pgm otodidak</p>
-                <p class="sub-footer">creating website interactive</p>
+                <p class="sub-footer">creating website</p>
+                <p class="sub-footer">freelance (friend's project)</p>
                 <p class="sub-footer">church service</p>
                 <p class="sub-footer">photography</p>
                 </div>
                 <div class="isi-f">
                 <label class="title-footer">Social media zeru</label>
+                <p class="sub-footer"><a href="https://github.com/zeru-program/">Github</a></p>
                 <p class="sub-footer"><a href="https://wa.me/6289526333265">WhatsApp</a></p>
                 <p class="sub-footer"><a href="https://www.instagram.com/zerr.ace?r">Instagram</a></p>
                 <p class="sub-footer"><a href="mailto:zeruprogram@gmail.com?subject=HireYou">Email</a></p>
                 </div>
               </div>
-              <label class="copyright">copyright ©2024 all rights reserved. by zeru</label>
+              <label class="copyright">copyright ©2024-2025 all rights reserved. by zeru, version web app 2.0.1. new updated in 8 Apr 2024</label>
             </footer>
-        </main>
-
-
-
-      <!-- pop up -->
+                <!-- footer end -->
+        <!-- ============= main content end ============== -->
+      <!-- pop up modals sucsess form -->
       <div class="con-popup-succes">
         <div class="isi-popup-succ">
           <p class="succes-title">Successful sending!</p>
         </div>
       </div>
+      <!-- pop up modals sucsess form -->
+      
+      
+    <!--   script source -->
         <script src="script.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--   script source -->
+        
     </body>
 </html>

@@ -56,13 +56,15 @@ nav {
   width: 100%;
   background: #fff;
   user-select: none;
-  border-bottom: 2px solid black;
   z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
+  transition: all .5s ease;
 }
-
+.nav-shadow {
+  box-shadow: 0 5px 5px rgba(0,0,0,.1);
+}
 nav .logo-nav {
   position: absolute;
   left: 0;
@@ -113,11 +115,29 @@ nav .logo-nav a {
   padding: 10px 20px;
   border-radius: 5px;
   color: black;
+  margin-left: 10px;
   cursor: pointer;
   transition: all .2s ease;
   border-bottom: 2px solid transparent;
 }
-
+#textUserNav {
+  margin-top: 10px;
+  font-family:'Outfit', sans-serif;
+}
+#logout:hover {
+  background: black;
+  color:white;
+}
+#sign-in-btn:hover {
+  background: #39a2ff;
+  border-bottom: 0 !important;
+  color:white;
+}
+#sign-up-btn:hover {
+  background: transparent !important;
+  border: 1.5px solid #39a2ff !important;
+  color: black;
+}
 .link-item:hover {
   background: transparent;
   border-bottom: 2px solid black;
@@ -166,6 +186,31 @@ main {
   position: relative;
   font-family: "Outfit", sans-serif;
 }
+#bg-patern-home {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #e5e5f7;
+  opacity: 0.3;
+  background-image: radial-gradient(#000000 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+  background-attachment: fixed;
+  z-index: 0;
+}
+.fill-home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.waves-home {
+  position: absolute;
+  bottom: 0;
+}
 .animateWipe {
   position: absolute;
   top: 0;
@@ -178,13 +223,30 @@ main {
 [transition="out:circle:top-left"] {
   --transition__duration: 3s;
 }
+
 .btn-talk:hover {
   background: #000;
   color: #fff;
   transform: scale(.95);
 }
-
 .btn-talk {
+  user-select: none;
+  padding: 10px 20px;
+  background: transparent;
+  color: #000;
+  border: 2px solid black;
+  margin: 10px;
+  font-weight: 600;
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+  transition: all .4s ease;
+}
+.btn-cv:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(.95);
+}
+.btn-cv {
   user-select: none;
   padding: 10px 20px;
   background: transparent;
@@ -263,7 +325,7 @@ main {
   }
 }
 .translatedRight {
-  transform: translateX(300%);
+  transform: translateX(400%);
 }
 .hi-title {
   font-weight: 800;
@@ -272,7 +334,9 @@ main {
 /* about */
 
 #about {
-  height: 100vh;
+  height: auto;
+  padding-top: 50px;
+  padding-inline: 40px;
   font-family: "Outfit", Sans-Serif;
 }
 #aboutTitle {
@@ -297,6 +361,8 @@ main {
   padding-top: 30%;
   padding-bottom: 10%;
   font-family: "Outfit", sans-serif;
+  background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(189,204,255,1) 100%);
 }
 .con-box-skil {
   display: flex;
@@ -327,22 +393,49 @@ main {
 }
 .desk-skil {
   text-align: center;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-inline: 20px;
 }
+
+/* servis */
+#servis {
+  width: 100%;
+  height: auto !important;
+  background: #f37143;
+  color: white;
+  font-family: "Outfit", Sans-Serif;
+}
+.title-servis {
+  text-align: left;
+  font-size: 1.3em !important;
+  font-weight: 800;
+}
+
 
 /* portofolio */
 #portofolio {
       width: 100%;
-    height: auto;
+      height: auto;
       position: relative;
       overflow-x: hidden;
       padding-top: 10%;
+}
+.btn-portofolio {
+  width: 60px !important;
+  height: 60px;
+  margin-inline: 5px !important;
+  padding: 0 !important;
+  background: #ffffff55 !important;
+  color: white;
+  border-radius: 50% !important;
+  top: 50% !important;
 }
 .img-porto {
       width: 100%;
       height: 100vh;
       object-fit: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed !important;
 }
 .bxsh {
   display: flex;
@@ -366,7 +459,7 @@ main {
       width: 100%;
       height: 100%;
       flex-shrink: 0;
-      opacity: .3;
+      opacity: 1;
       transition: all .6s ease;
     }
     .opacityOn {
@@ -493,18 +586,13 @@ main {
   flex-direction: column;
   width: 350px;
   height: 700px;
-  background: white;
-  color: black;
+  background: black;
+  color: white;
   border-radius: 20px;
+  padding-inline: 10px;
   border: 2px solid black;
   position: relative;
 }
-
-.contact-information {
-  background: black;
-  color: white;
-}
-
 .tContact {
   position: absolute;
   top: 3%;
@@ -544,6 +632,7 @@ main {
   height: 700px;
   background: white;
   color: black;
+  padding-inline: 10px;
   border-radius: 20px;
   gap: 20px;
   border: 2px solid black;
@@ -556,6 +645,7 @@ form {
   flex-direction: column;
   gap: 10px;
   margin-top: 5%;
+  max-width: 300px;
 }
 .con-input {
   display: flex;
@@ -629,6 +719,9 @@ footer {
   font-size: .7em;
   position: absolute;
   bottom: 2%;
+  padding-inline: 30px;
+  padding-top: 15px;
+  text-align: center;
 }
 .title-footer {
   font-weight: 600;
@@ -666,6 +759,7 @@ footer {
   font-weight: 800;
   text-align: center;
 }
+
 
 
 /* pop up */
@@ -712,3 +806,47 @@ footer {
   padding-right: 5%;
 }
 
+#button-to-top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+  border-radius: 50%;
+  background: rgba(225,225,225,.4);
+  backdrop-filter: blur(2px);
+  color: #000;
+  border: none;
+  opacity: 0;
+  transition: all .5s ease;
+  z-index: 99999;
+}
+#button-to-top.show {
+  opacity: 1;
+}
+
+/*** shorcut ***/
+.d-flex {
+  display: flex;
+}
+.d-none {
+  display: none;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.px-3 {
+  padding-inline: 15px;
+}
+.btn-outline-danger {
+  border: 1.5px solid red;
+}
+.btn-outline-primary {
+  border: 1.5px solid #39a2ff;
+}
+.btn-bg-primary {
+  background: #39a2ff !important;
+  color: white;
+}
+.fix-padding-i {
+}
