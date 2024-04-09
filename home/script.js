@@ -325,13 +325,15 @@ window.onload = () => {
 
 // download cv
 function downloadCv() {
+  alert("sorry server maintenance...");
+  /*
   const anchor = document.createElement('a');
   anchor.href = "JUSTINE_CV_2024_BOGOR_INDONESIA.pdf";
   anchor.download = "JUSTINE_CV_2024_BOGOR_INDONESIA.pdf";
 
   document.body.appendChild(anchor);
   anchor.click();
-  document.body.removeChild(anchor);
+  document.body.removeChild(anchor);*/
 
 }
 
