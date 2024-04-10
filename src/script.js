@@ -4,6 +4,7 @@ console.log("zeru website. created by Justine, © 2023-2024 all rights reserved.
 // back to top btn
 var btn = document.querySelector('#button-to-top');
 document.addEventListener('scroll', (e) => {
+  console.log('dd')
   if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
     btn.classList.add('show');
   } else {
@@ -77,7 +78,7 @@ toContact.onclick = function () {
     window.location.href = "#contact";
 };
 document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".container-page");
+    const sections = document.querySelectorAll(".container");
     const navLinks = document.querySelectorAll(".link-item");
 
     window.addEventListener("scroll", () => {
