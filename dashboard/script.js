@@ -131,6 +131,46 @@ formProject.addEventListener("submit", (e) => {
     })
   })
 });
+//handle edit project
+function editProject(uniqueId, elem) {
+    var siblingTd = elem.parentElement.parentElement.getElementsByTagName("td");
+    for (var i = 0; i < siblingTd.length - 1; i++) {
+        siblingTd[i].contentEditable = true;
+        siblingTd[i].classList.add("temp-update-class");
+    }
+    elem.setAttribute("onclick", `updateNowProject('${uniqueId}')`);
+    elem.innerHTML = "SAVE";
+}
+function updateNowProject(uniqueId) {
+    var contentId = document.querySelectorAll(".temp-update-class");
+    var obj = {
+        id: contentId[0].textContent,
+        title: contentId[1].textContent,
+        description: contentId[2].textContent,
+        tech: contentId[3].textContent,
+        display: contentId[4].textContent,
+        url: contentId[5].textContent,
+        date: contentId[6].textContent
+    };
+   fetch(urlDb + `project/${uniqueId}.json`, {
+     method: "PATCH",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: JSON.stringify(obj)
+   })
+   .then(res => {
+   if (res.ok) {
+     alert('data di update')
+    location.reload();
+   } else {
+     alert('gagal update')
+   }
+})
+.catch(e => console.error(e))
+}
+
+
 // handle of delete project
 function deleteProject(key) {
 //  console.log(key)
