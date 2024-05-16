@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin panel</title>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   <script>
+     const verifyLogin = localStorage.getItem("hasLogin")
+     const user = localStorage.getItem("username")
+     window.onload = () => {
+       if (!verifyLogin && user !== 'admin') {
+         window.location.href = "/home/";
+         return;
+       } 
+     }
+   </script>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Zeru Admin</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="/">
+					<i class='bx bxs-home' ></i>
+					<span class="text">Home</span>
+				</a>
+			</li>
+			<li>
+				<a onclick="logoutUser()" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>1020</h3>
+						<p>New Order</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>2834</h3>
+						<p>Visitors</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>$2543</h3>
+						<p>Total Sales</p>
+					</span>
+				</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="todo">
+				  <h3 class="fw-bold">Account add</h3>
+				  <form action="" class="d-flex gap-2 flex-column" style="display:flex; flex-direction:column;gap:8px;">
+				    <label for="">Username</label>
+				    <input type="text" style="padding-block:10px;" />
+				    <label for="">Email</label>
+				    <input type="email" style="padding-block:10px;" />
+				    <label for="">Password</label>
+				    <input type="password" style="padding-block:10px;" />
+				    <button type="submit" style="padding-block:10px;">SUBMIT</button>
+				  </form>
+				</div>
+				<div class="todo">
+				  <h3 class="fw-bold">Project Management</h3>
+				  <form id="form-project" class="" style="display:flex; flex-direction:column;gap:8px;">
+				    <label for="">Title project</label>
+				    <input type="text" id="title" style="padding-block:10px;" />
+				    <label for="">Tech project</label>
+				    <input type="text" id="tech" style="padding-block:10px;"/>
+				    <label for="">Description project</label>
+				    <input type="text" id="desc" style="padding-block:10px;"/>
+				    <label for="">Display project</label>
+				    <select name="" style="padding-block:10px;" id="disp">
+				        <option value="" hidden></option>
+				        <option value="fake">Fake project</option>
+				        <option value="real">Real project</option>
+				    </select>
+				    <label for="">Url project</label>
+				    <input type="text" id="urlP" style="padding-block:10px;"/>
+				    <label for="">Tanggal pembuatan project</label>
+				    <input type="date" id="date" style="padding-block:10px;"/>
+				    <button type="submit" style="padding-block:10px;">SUBMIT</button>
+				  </form>
+				  <hr style="margin-block:20px;">
+				  <div id="">
+				    <table id="table-project" border="0">
+				      <thead>
+				        <tr>
+				          <td>id</td>
+				          <td>title project</td>
+				          <td>description project</td>
+				          <td>tech project</td>
+				          <td>display</td>
+				          <td>url</td>
+				          <td>date</td>
+				          <td>option</td>
+				        </tr>
+				      </thead>
+				      <tbody id="project-body">
+				        
+				      </tbody>
+				    </table>
+				  </div>
+				</div>
+				<div class="todo">
+				  <h3 class="fw-bold">Portofolio Management</h3>
+				  <form id="form-porto" class="" style="display:flex; flex-direction:column;gap:8px;">
+				    <label for="">Title portofolio</label>
+				    <input type="text" id="titlePorto" style="padding-block:10px;" />
+				    <label for="">File gambar</label>
+				    <input type="file" id="filePorto" style="padding-block:10px;"/>
+				    <button type="submit" style="padding-block:10px;">SUBMIT</button>
+				  </form>
+				  <hr style="margin-block:20px;">
+				  <div id="">
+				    <table id="table-project" border="0">
+				      <thead>
+				        <tr>
+				          <td>id</td>
+				          <td>title portofolio</td>
+				          <td>url gambar</td>
+				          <td>option</td>
+				        </tr>
+				      </thead>
+				      <tbody id="portofolio-body">
+				        
+				      </tbody>
+				    </table>
+				  </div>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-storage-compat.js"></script>
+	<script type="text/javascript">
+const firebaseConfig = {
+    databaseURL: "https://zerupgmm-default-rtdb.firebaseio.com/",
+    storageBucket: "gs://zerupgmm.appspot.com"
+};
+firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+const storage = firebase.storage();
+
+document.getElementById("form-porto").addEventListener("submit", e => {
+    e.preventDefault();
+    let urlDb = "https://zerupgmm-default-rtdb.firebaseio.com/";
+    const title = document.getElementById("titlePorto").value;
+    const file = document.getElementById("filePorto").files[0];
+    const fileName = Date.now() + "_" + file.name;
+    const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef.child("portofolio/" + fileName).put(file);
+
+    uploadTask.on(
+        "state_changed",
+        snapshot => {},
+        error => {
+            console.error("Error uploading profile image:", error);
+        },
+        () => {
+            uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+                fetch(urlDb + "portofolio.json")
+                    .then(res => res.json())
+                    .then(data => {
+                        let lastIndex = 0;
+                        for (const key in data) {
+                            lastIndex++;
+                        }
+                        const newId = lastIndex + 1;
+                        const formVal = {
+                            id: newId,
+                            title: title,
+                            url: downloadURL
+                        };
+
+                        // Kirim data ke Firebase
+                        fetch(urlDb + "portofolio.json", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(formVal)
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert(
+                                        "Berhasil menambahakn portofolio"
+                                    );
+                                    location.reload();
+                                } else {
+                                    throw new Error("Gagal menyimpan data.");
+                                }
+                            })
+                            .catch(error => {
+                                alert("Terjadi kesalahan: " + error.message);
+                            });
+                    })
+                    .catch(e => console.error(err.message));
+            });
+        }
+    );
+});
+   
+	</script>
+</body>
+</html>

@@ -1,6 +1,64 @@
 // cptyt
 console.log("zeru website. created by Justine, © 2023-2024 all rights reserved.");
 
+// db 
+let urlDb = 'https://zerupgmm-default-rtdb.firebaseio.com/';
+
+// print project
+fetch(urlDb + 'project.json')
+.then(res=>res.json())
+.then(data=> {
+  for (let key in data) {
+    var val = data[key]
+    const getProjectFake = document.getElementById('fake-p-body')
+    const getProjectReal = document.getElementById('real-p-body')
+    var elem = document.createElement('div')
+    elem.innerHTML = `
+                <div class="btn-project">
+                  <p class="m-0 fw-bold">${val.title}</p>
+                  <p class="m-0" style="font-size:.7em">${val.tech}</p>
+                  <p class="m-0" style="font-size:.7em">${val.description}.</p>
+                  <button class="py-2" style="background:transparent;color:white;border:1.5px solid white;width:80px;font-size:.8em;height:auto;" onclick="window.open('${val.url}')">Live web <i class="bi bi-arrow-right"></i></button>
+                  <p class="mt-2 mb-0" style="font-size:.7em">Created by zeru in ${val.date}.</p>
+                </div>
+    `;
+    
+    if (val.display === 'fake') {
+      getProjectFake.appendChild(elem)
+    } else if (val.display === 'real') {
+      getProjectReal.appendChild(elem).cloneNode(true);
+    }
+    
+  }
+})
+.catch(e => console.error(e))
+
+// Fetch portofolio data and update the carousel
+fetch(urlDb + "portofolio.json")
+  .then(res => res.json())
+  .then(data => {
+    const bodyPorto = document.getElementById('portofolio-body-por');
+    let isFirstItem = true; // Flag to track the first item
+    
+    for (let key in data) {
+      const val = data[key];
+      const elem = document.createElement('div');
+      
+      // Add 'active' class to the first carousel item
+      elem.className = 'carousel-item' + (isFirstItem ? ' active' : '');
+      isFirstItem = false; // Set the flag to false after the first iteration
+
+      elem.setAttribute('data-bs-interval', '5000');
+      elem.innerHTML = `
+        <div style="background-image: url('${val.url}');" class="d-block img-porto w-100" alt="..."></div>
+      `;
+      
+      bodyPorto.appendChild(elem);
+    }
+  })
+  .catch(e => console.error(e));
+
+
 // back to top btn
 var btn = document.querySelector('#button-to-top');
 document.addEventListener('scroll', (e) => {

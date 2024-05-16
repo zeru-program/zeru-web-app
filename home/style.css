@@ -99,6 +99,7 @@ nav .logo-nav a {
   margin: 0;
   padding: 0;
   color: black;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .1);
   backdrop-filter: blur(5px);
   transition: all .3s ease-in-out;
   z-index: 999;
@@ -572,7 +573,25 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 
   color: black;
   border-bottom: 1px solid black;
 }
-
+.btn-project {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 170px;
+  text-align: left;
+  padding-block: 10px;
+  padding-inline: 10px;
+  background: rgb(190,199,255);
+background: linear-gradient(0deg, rgba(42,91,255,1) 0%, rgb(109,129,255) 100%);
+  color: white;
+  gap: 5px;
+  border: 0;
+  border-radius: 10px;
+}
+#fake-p-body::-webkit-scrollbar,
+#real-p-body::-webkit-scrollbar {
+  display: none;
+}
 /* contact */
 #contact {
   padding-top: 15%;
